@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'com.mobi.davm.tools'
+version '1.0-SNAPSHOT'
+def clientName = "uiautomatorviewer.jar"
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'davm uiautomator',
+                'Implementation-Version': version,
+                'Main-Class': 'com.android.uiautomator.UiAutomatorViewer',
+                'Class-Path':'org-eclipse-jface-3.6.2.jar ddmlib.jar org-eclipse-core-c\
+        ommands-3.6.0.jar org-eclipse-equinox-common-3.6.0.jar osgi-4.0.0.jar\
+        common.jar kxml2-2.3.0.jar annotations.jar guava-17.0.jar'
+    }
+    archiveName = clientName
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+    compile 'com.google.guava:guava:27.0.1-jre'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
